@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background: url('https://www.toptal.com/designers/subtlepatterns/uploads/memphis-mini.png') repeat;
+        }
+        .product-details {
+            max-width: 400px;
+            margin: auto;
+            border: 3px solid #ddd;
+            padding: 20px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+        }
+        .button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
+    <script>
+         const products = [
+            { name: "Cool T-Shirt", price: "$20.00", image: "https://images-platform.99static.com//RHclvu0QqztUV73WVOdHCqdH7A8=/125x0:1395x1270/fit-in/500x500/99designs-contests-attachments/123/123004/attachment_123004465", description: "A comfortable and stylish t-shirt." },
+            { name: "Classic Jeans", price: "$40.00", image: "https://www.jolliman.co.uk/csp/jol/web/products/opt1/800x1100/JA86.jpg", description: "Timeless denim jeans for everyday wear." },
+            { name: "Stylish Jacket", price: "$60.00", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRepYDrvIUd6zZVRP3FjvyBrnU5lXtr6aqEWA&s", description: "A sleek jacket perfect for any occasion." },
+            { name: "Sneakers", price: "$50.00", image: "https://cdn.runrepeat.com/storage/gallery/buying_guide_primary/66/66-best-sneakers-001-15275042-main.jpg", description: "Comfortable and trendy sneakers." },
+            { name: "Baseball Cap", price: "$15.00", image: "https://decathlon.com.lb/cdn/shop/products/8990c2e63ccc57c9942c81187dc185cd_675x.progressive.jpg?v=1657419817", description: "A stylish cap for sunny days." },
+            { name: "Casual Shorts", price: "$25.00", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7Dq-JI4uGBfbGhdpoanCaqk8LorZe9C7leA&s", description: "Light and breathable shorts." },
+            { name: "Formal Shirt", price: "$30.00", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_aHirwJKn0YA4FdETNFmGl7ngDBwdrgbEaw&s", description: "Perfect for business or formal occasions." },
+            { name: "Sports Hoodie", price: "$45.00", image: "https://assets.ajio.com/medias/sys_master/root/20231221/ZLcx/65846aa5afa4cf41f5e298c6/-473Wx593H-469556097-black-MODEL.jpg", description: "Warm and stylish hoodie for workouts." },
+            { name: "Elegant Dress", price: "$55.00", image: "https://www.ladyblacktie.com/cdn/shop/files/LadyBlackTie_040435__90350.1651246489.1280.1280.jpg?v=1718283676", description: "A beautiful dress for special occasions." },
+            { name: "Running Shoes", price: "$70.00", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpzs1FHCSzr3HQ38ZYI5XdFk8XpAWI7eIIxQ&s", description: "Designed for maximum comfort and performance." },
+            { name: "Denim Jacket", price: "$80.00", image: "https://thursdayboots.com/cdn/shop/products/1024x1024-Mens-Jackets-Denim-Trucker-WashedIndigo-010423-1_1024x1024.jpg?v=1673282143", description: "Classic denim jacket for casual looks." },
+            { name: "Slim Fit Pants", price: "$35.00", image: "https://shop.jimsformalwear.com/cdn/shop/files/michael-kors-blue-performance-stretch-slim-fit-pants_92a6203a-2d4d-4631-9b39-f0676a178aa9.jpg?v=1710530015&width=1920", description: "Modern and stylish slim-fit pants." },
+            { name: "Casual Sweater", price: "$45.00", image: "https://m.media-amazon.com/images/I/81+3VpwtQFL._AC_UY350_.jpg", description: "Soft and cozy sweater for cool days." },
+            { name: "Flip Flops", price: "$10.00", image: "https://cdn.shopify.com/s/files/1/0617/6319/0955/files/Pair_of_red_flip_flops_pushed_down_on_white_sand_on_the_beach..jpg?v=1675129460", description: "Perfect for the beach or casual wear." },
+            { name: "Leather Belt", price: "$20.00", image: "https://www.hanksbelts.com/cdn/shop/files/dress-belts-collection_1600x.jpg?v=1623341068", description: "Elegant leather belt to complete your outfit." },
+            { name: "Sunglasses", price: "$30.00", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1xw8pDT2afNl02a-0Lz6OFBLVD8ed1uq1MQ&s", description: "Protect your eyes with style." },
+            { name: "Gloves", price: "$15.00", image: "https://www.schwartz-vonhalen.com/cdn/shop/files/Jaxon-brown-leather-gloves-men-schwartz-von-halen-3.jpg?v=1723300400", description: "Warm and comfortable gloves for winter." },
+            { name: "Sports Shorts", price: "$28.00", image: "https://i5.walmartimages.com/seo/FAKKDUK-Athletic-Shorts-For-Womens-Casual-Yoga-Pants-Teen-Girls-High-Waisted-Comfy-Lounge-Workout-Sports-Summer-Baggy-Pockets-Black-L-Black_40da3202-4f8f-4127-9ce0-0c4a39d86098.85df6caf7dd8a36a86b9b5198fdca7a1.jpeg", description: "Lightweight shorts for athletic activities." },
+            { name: "Tank Top", price: "$18.00", image: "https://i5.walmartimages.com/asr/e48fd46e-5dd2-41ef-b899-c70481ea2b8f.42e030994e19d6129f80012d8e1b531c.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF", description: "Great for hot weather or workouts." },
+            { name: "Ankle Boots", price: "$65.00", image: "https://assets.digitalcontent.marksandspencer.app/images/w_1024,q_auto,f_auto/SD_10_T83_8525_Y0_X_EC_0/Leather-Lace-Up-Block-Heel-Ankle-Boots", description: "Stylish boots for any occasion." },
+            { name: "Casual Socks", price: "$8.00", image: "https://m.media-amazon.com/images/I/61LIJv+0rbL._SS400_.jpg", description: "Comfortable and breathable socks." },
+            { name: "Winter Coat", price: "$90.00", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6C2Qv1P2yFff-8EXfjk9YJvVN41eq7ECxWA&s", description: "Warm coat for cold weather." }
+        ];
+
+        function loadProductDetails() {
+            const params = new URLSearchParams(window.location.search);
+            const index = params.get('index');
+            if (index !== null && products[index]) {
+                const product = products[index];
+                document.getElementById('product-image').src = product.image;
+                document.getElementById('product-name').innerText = product.name;
+                document.getElementById('product-price').innerText = product.price;
+                document.getElementById('product-description').innerText = product.description;
+            } else {
+                document.getElementById('product-details').innerHTML = '<p>Product not found.</p>';
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", loadProductDetails);
+    </script>
+</head>
+<body>
+    <div class="product-details" id="product-details">
+        <img id="product-image" src="" alt="Product Image">
+        <h2 id="product-name"></h2>
+        <p id="product-price"></p>
+        <p id="product-description"></p>
+        <button class="button" onclick="window.history.back()">Go Back</button>
+    </div>
+</body>
+</html>
